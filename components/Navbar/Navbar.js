@@ -8,7 +8,7 @@ const Navbar = () => {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <nav className="flex justify-between items-center py-10">
+    <nav className="flex justify-between items-center py-10 ">
       <Link href={"/"}>
         <button className="text-lg font-medium">Creative Thoughts</button>
       </Link>
