@@ -1,5 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import Head from "next/head";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Message from "../components/Message/Message";
 import { db } from "../utils/firebase";
@@ -31,7 +32,13 @@ export default function Home() {
       <div className="my-12 font-medium text-xl">
         <h2>See what other people are saying</h2>
         {allPosts.map((post) => (
-          <Message key={post.id} {...post} />
+          <Message key={post.id} {...post}>
+            <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+              <button className="text-xs underline">
+                {post.comments.length} comments
+              </button>
+            </Link>
+          </Message>
         ))}
       </div>
     </div>

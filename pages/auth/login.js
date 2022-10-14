@@ -13,6 +13,9 @@ const Login = () => {
 
   const GoogleLogin = async () => {
     try {
+      googleProvider.setCustomParameters({
+        prompt: "select_account",
+      });
       const result = await signInWithPopup(auth, googleProvider);
       route.push("/");
     } catch (error) {
